@@ -30,11 +30,12 @@ function SubmitPromiseAction(evt) {
 }
 
 function addPromiseNotify({ amount, delay, step }) {
+  let delayTime = delay;
   for (let i = 1; i <= amount; i += 1) {
-    createPromise(i, delay)
+    createPromise(i, delayTime)
       .then(value => Notiflix.Notify.success(value))
       .catch(error => Notiflix.Notify.failure(error));
 
-    delay += step;
+    delayTime += step;
   }
 }
