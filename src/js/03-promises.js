@@ -33,14 +33,8 @@ function addPromiseNotify({ amount, delay, step }) {
   let delayTime = delay;
   for (let i = 1; i <= amount; i += 1) {
     createPromise(i, delayTime)
-      .then(({ position, delay }) =>
-        Notiflix.Notify.success(
-          `✅ Fulfilled promise ${position} in ${delay}ms`
-        )
-      )
-      .catch(({ position, delay }) =>
-        Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`)
-      );
+      .then(value => Notiflix.Notify.success(value))
+      .catch(error => Notiflix.Notify.failure(error));
 
     delayTime += step;
   }
